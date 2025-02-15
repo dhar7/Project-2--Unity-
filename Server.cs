@@ -19,7 +19,7 @@ public class KeyDataWrapper
 
 public class Server : MonoBehaviour
 {
-    [SerializeField] private string serverUrl = "http://localhost:3000/data";
+    [SerializeField] private string serverUrl = "https://crab-loved-hen.ngrok-free.app/data";
     [SerializeField] private float cooldown = 0.5f; // Seconds between sends
 
     private float lastSendTime;
