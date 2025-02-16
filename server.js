@@ -3,18 +3,16 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Middleware fixes
+// Middleware
 app.use(cors());
-app.use(express.json()); // Add JSON body parser
+app.use(express.json());
 
 app.post('/data', (req, res) => {
   try {
-    // Validate request structure
     if (!req.body?.keys) {
       return res.status(400).json({ error: "Missing 'keys' array" });
     }
 
-    // Process keys safely
     const keys = req.body.keys;
     if (!Array.isArray(keys)) {
       return res.status(400).json({ error: "'keys' must be an array" });
@@ -31,6 +29,6 @@ app.post('/data', (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://192.168.0.105:${port}`);
 });
