@@ -1,0 +1,11 @@
+Input: {}
+Output: internal function calls in between Editor Mode and Play Mode
+
+OnPlaymodeStateChanged(): 
+  state = EditorApplication.playModeState
+  if (state == PlayModeStateChange.ExitingEditMode):
+      Instantiate `StackTrace` to capture the function call sequence.  
+      For each stack frame in `StackTrace`:  
+          Extract method and declaring class.    
+          log method name and class to the console. 
+Return
