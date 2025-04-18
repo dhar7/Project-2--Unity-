@@ -16,7 +16,7 @@ box_embedded.jgp will be generated
 Creating Malicious Package
 =========================================================================================================
 
-Export Packages combined with box_embedded.jgp + Launcher.cs, name it for example Malicious_Package.package
+Export Packages combined with box_embedded.jpg + Launcher.cs, name it for example Malicious_Package.package
 
 Import Malicious_Package.package
 
