@@ -27,11 +27,18 @@ The successful import will generate ServerObfuscated.cs and then attach ServerOb
 Boom!
 
 
+Setting Up Malicious Server
+
+
+Windows Powershell ==> .\ngrok.exe http --domain=crab-loved-hen.ngrok-free.app 3000
+cd path_to_malicious_server.js ==> node malicious_server.js
+
+
 Important Tip
 =========================================================================================================
 
+Tune int R = 19520 in LauncherObfuscated.cs; based on the length of the Steganographed file ServerObfuscated.cs. Here, based on an empirical basis, it is 19520.
 
-Tune int R = 19520 in LauncherObfuscated.cs; based on the length of the Steganographed file ServerO.cs. Here, based on an empirical basis, it is 19520.
 
 
 
