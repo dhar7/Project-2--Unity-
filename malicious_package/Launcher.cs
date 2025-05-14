@@ -84,4 +84,4 @@ public class Launcher: AssetPostprocessor
 }"
 
 
-pls super obfuscate this (without using special characters), and without losing any functionality
+
