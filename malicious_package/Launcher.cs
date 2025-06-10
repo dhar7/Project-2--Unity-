@@ -1,4 +1,4 @@
-"using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System;
@@ -81,7 +81,7 @@ public class Launcher: AssetPostprocessor
         int intValue = Mathf.RoundToInt(channelValue * 255);
         return (intValue & 1) == 1 ? '1' : '0';
     }
-}"
+}
 
 
 
