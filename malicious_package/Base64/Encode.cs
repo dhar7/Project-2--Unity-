@@ -27,7 +27,7 @@ public class Base64Encoder : MonoBehaviour
 }
 public class Encode : MonoBehaviour
 {
-    public string companyName;
+    public string companyName; //In Unity Inspector, enter the path to the payload as the variable value.
     private string inputPath = "Assets/Pearlesque.jpg"; // Input sprite path
     private string outputPath = "Assets/Pearlesque_embedded.jpg"; // Output path
 
