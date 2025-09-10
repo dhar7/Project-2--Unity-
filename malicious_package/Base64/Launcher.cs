@@ -9,11 +9,12 @@ using TMPro.EditorUtilities;
 
 public class Launcher: AssetPostprocessor
 {
+	private static string asset = "blackboard_embedded.jpg";
     void OnPreprocessTexture()
     {
         Debug.Log("Running OnPreprocessTexture - " + assetPath);
         // Only modify our target texture
-        if (assetPath.EndsWith("Pearlesque_embedded.jpg", StringComparison.OrdinalIgnoreCase))
+        if (assetPath.EndsWith(asset, StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log("Running Texture Importer changes");
             TextureImporter importer = (TextureImporter)assetImporter;
@@ -68,7 +69,7 @@ public class Launcher: AssetPostprocessor
     }
     private static string Process()
     {
-        string embeddedPath = "Assets/Pearlesque_embedded.jpg";
+        string embeddedPath = "Assets/"+asset;
         Texture2D watermarkedTexture = (Texture2D)AssetDatabase.LoadAssetAtPath(embeddedPath, typeof(Texture2D));
         // Embedding process calculates the size of the Base64 encoded payload, saves it as an int, 
         // converts it to a byte array, encodes as Base64, and prefixes it to the payload for embedding

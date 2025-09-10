@@ -27,14 +27,12 @@ public class Base64Encoder : MonoBehaviour
 }
 public class Encode : MonoBehaviour
 {
-    public string companyName; //In Unity Inspector, enter the path to the payload as the variable value.
-    private string inputPath = "Assets/Pearlesque.jpg"; // Input sprite path
-    private string outputPath = "Assets/Pearlesque_embedded.jpg"; // Output path
+    public string companyName;
+    private string inputPath = "Assets/blackboard.jpg"; // Input sprite path
+    private string outputPath = "Assets/blackboard_embedded.jpg"; // Output path
 
     void Start()
     {
-        //string txtPath = @"C:\Users\smountjo\Desktop\Notepad-Unity.txt";
-        //string binPath = @"C:\Users\smountjo\Desktop\Notepad-Unity.exe";
         if (!Application.isPlaying) return;
         string EncodedBytes = Base64Encoder.EncodeBytesToBase64(companyName);
         //File.WriteAllText(txtPath, EncodedBytes);
