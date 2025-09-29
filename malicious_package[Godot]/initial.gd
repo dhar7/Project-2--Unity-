@@ -2,10 +2,9 @@ extends Node2D
 
 func _ready():
 	print("Hello, world!")
-	#var second_script = load("res://second.gd").new()
+	#var second_script = load("res://encoder.gd").new()
 	#add_child(second_script)
-	#var third = load("res://third.gd").new()
-	#add_child(third)
+
 	var decoded_path = "res://decoded_script.gd"
 	var node_to_add : Node = null
 
