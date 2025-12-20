@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmadlwv0qd4fc"]
+
+[ext_resource type="Script" uid="uid://1yr1qlul8u81" path="res://SteeringWheelControl.gd" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://gxtpfw6wi22h" path="res://initial.gd" id="2_x4av3"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3mqji")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_x4av3")

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SteeringWheel",
+			"Path": "..\\Source\\SteeringWheel.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SteeringWheelEditor",
+			"Path": "..\\Source\\SteeringWheelEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

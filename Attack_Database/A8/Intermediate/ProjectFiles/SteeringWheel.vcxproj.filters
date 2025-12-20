@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\SteeringWheel.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SteeringWheel.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SteeringWheelEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\SteeringWheelInterface">
+      <UniqueIdentifier>{4CCE4F54-2FC5-3FCF-99F5-E5C15FB1B0E2}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SteeringWheelInterface\SteeringWheelInterface.Build.cs">
+      <Filter>Source\SteeringWheelInterface</Filter>
+    </None>
+    <Filter Include="Source\SteeringWheelInterface\Private">
+      <UniqueIdentifier>{9E12A293-4883-3DD2-BECF-7A9828EBF3E3}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SteeringWheelInterface\Private\SteeringWheelInterfaceModule.cpp">
+      <Filter>Source\SteeringWheelInterface\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\SteeringWheelInterface\Public">
+      <UniqueIdentifier>{E2778029-C119-3900-A0CB-97835EA2A213}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SteeringWheelInterface\Public\LogitechSteeringWheelLib.h">
+      <Filter>Source\SteeringWheelInterface\Public</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\SteeringWheelInterface\Public\LogitechSteeringWheelLib.lib">
+      <Filter>Source\SteeringWheelInterface\Public</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SteeringWheelInterface\Public\SteeringWheelInterface.cpp">
+      <Filter>Source\SteeringWheelInterface\Public</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SteeringWheelInterface\Public\SteeringWheelInterface.h">
+      <Filter>Source\SteeringWheelInterface\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\SteeringWheel">
+      <UniqueIdentifier>{C123298D-F728-3B80-B5F5-23F0841E96A3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SteeringWheel\SteeringWheel.Build.cs">
+      <Filter>Source\SteeringWheel</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SteeringWheel\SteeringWheel.cpp">
+      <Filter>Source\SteeringWheel</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SteeringWheel\SteeringWheel.h">
+      <Filter>Source\SteeringWheel</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

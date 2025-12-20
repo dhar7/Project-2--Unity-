@@ -1,0 +1,9 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Peicong Wu\\Documents\\GitHub\\Project-2--Unity-\\Attack_Database\\A8\\Source\\SteeringWheelInterface\\SteeringWheelInterface.Build.cs",
+		"C:\\Users\\Peicong Wu\\Documents\\GitHub\\Project-2--Unity-\\Attack_Database\\A8\\Source\\SteeringWheel\\SteeringWheel.Build.cs",
+		"C:\\Users\\Peicong Wu\\Documents\\GitHub\\Project-2--Unity-\\Attack_Database\\A8\\Source\\SteeringWheel.Target.cs",
+		"C:\\Users\\Peicong Wu\\Documents\\GitHub\\Project-2--Unity-\\Attack_Database\\A8\\Source\\SteeringWheelEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.1"
+}
