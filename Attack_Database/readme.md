@@ -1,4 +1,4 @@
-These are the all 12 PoC attacks as mentioned in the paper.
+
 
 ### Payload Generation
 How Launcher script materialize payload with the help of ATF and how a malicious package is generated:
