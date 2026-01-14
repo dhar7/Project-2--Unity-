@@ -1,8 +1,0 @@
-[configuration]
-compatibility_minimum = 4.3
-entry_symbol = "logi_steering_wheel_library_init"
-
-[libraries]
-windows.x86_64 = "res://bin/logi_steering_wheel_gde.dll"
-linux.x86_64 = "res://bin/liblogi_steering_wheel_gde.so"
-macos.x86_64 = "res://bin/liblogi_steering_wheel_gde.dylib"
