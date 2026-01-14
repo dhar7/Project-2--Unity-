@@ -1,7 +1,7 @@
 
 
 ### Payload Generation
-How Launcher script materialize payload with the help of ATF and how a malicious package is generated:
+How Launcher script materialize payload with the help of IMP and how a malicious package is generated:
 
 https://github.com/user-attachments/assets/e1e77697-ea42-4b2e-abac-5676d873196a
 
